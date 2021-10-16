@@ -27,3 +27,4 @@ max_ele , min_ele = max_min_element(Array)
 
 print("Maximum element is " + str(max_ele) + " and Minimum element is " + str(min_ele))
 
+# Time Complexity : O(n)
