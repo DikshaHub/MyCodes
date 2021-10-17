@@ -22,9 +22,14 @@ Array = [n]
 print(" Please enter the array in a single line separated by space : ")
 Array = list(map(int,input().split()))
 
+if len(Array) == n:
+    print(" Given array is "+ str(Array))
+    max_ele, min_ele = max_min_element(Array)
+    print("Maximum element is " + str(max_ele) + " and Minimum element is " + str(min_ele))
 
-max_ele , min_ele = max_min_element(Array)
+else:
+    print(" Enter "+ str(n) + " elements only. ")
 
-print("Maximum element is " + str(max_ele) + " and Minimum element is " + str(min_ele))
 
-# Time Complexity : O(n)
+
+# Time Complexity O(n)
