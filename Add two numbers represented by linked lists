@@ -1,0 +1,51 @@
+class Solution{
+    //Function to add two numbers represented by linked list.
+    public static Node reverse(Node head){
+        Node prev = null;
+        Node next_head  ;
+        
+        while(head!=null){
+            next_head = head.next;
+            head.next = prev;
+            prev = head;
+            head = next_head;
+        }
+        return prev;
+    }
+    static Node addTwoLists(Node first, Node second){
+        // code here
+        // return head of sum list
+        first = reverse(first);
+        second = reverse(second);
+        
+        int c=0;
+        Node temp;
+        Node res = null;
+        Node curr = null;
+        while(first!=null || second!= null ){
+            int s =0;
+            if(first!=null)
+               s += first.data;
+           if(second!=null)
+               s += second.data;
+           s += c;
+           c = s/10;
+             s = s%10;
+            temp = new Node(s);
+            if(res==null) res=temp;
+            else curr.next=temp;
+            curr=temp;
+            
+            if(first != null) first = first.next;
+            if(second !=null) second = second.next;
+        }
+        
+        if(c>0){
+            temp = new Node(c);
+            curr.next=temp;
+            temp=curr;
+        }
+        res = reverse(res);
+        return res;
+    }
+}
