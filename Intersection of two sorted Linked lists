@@ -1,0 +1,43 @@
+class Sol
+{
+   public static Node findIntersection(Node head1, Node head2)
+    {
+        // code here.
+        Map<Integer,Integer> set = new HashMap<>();
+        
+        while(head1 != null){
+            if(set.containsKey(head1.data)){
+                 set.put(head1.data,set.get(head1.data)+1);
+            }else{
+            set.put(head1.data,1);
+            }
+            head1 = head1.next;
+        }
+        Node res=null;
+        Node temp=null;
+        int count = 0;
+        while(head2!=null){
+            
+            if(set.containsKey(head2.data) && set.get(head2.data)==1){
+                if(res==null){
+                    Node s = new Node(head2.data);
+                    res = s;
+                    temp = s;
+                }
+                else{
+                    Node s = new Node(head2.data);
+                    temp.next = s;
+                    temp = temp.next;
+                }
+                 set.put(head2.data,set.get(head2.data)-1);
+                
+            }
+             head2 = head2.next;
+                
+        }
+        
+        
+        return res;
+        
+    }
+}
